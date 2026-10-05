@@ -1,0 +1,15 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: bssm-soccer-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: q1w2e3
+      MYSQL_DATABASE: football_db
+    ports:
+    - 3305:3306
+    volumes:
+    - soccer-data:/var/lib/mysql
+
+volumes:
+  soccer-data:
