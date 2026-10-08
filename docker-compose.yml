@@ -10,6 +10,20 @@ services:
     - 3305:3306
     volumes:
     - soccer-data:/var/lib/mysql
+  backend:
+    build: ./backend
+    container_name: python-backend
+    ports:
+      - "5001:5000"
+    restart: always
+  frontend:
+    build: ./frontend
+    container_name: react-frontend
+    ports:
+      - "80:80"
+    restart: always
+    depends_on:
+      - backend
 
 volumes:
   soccer-data:
