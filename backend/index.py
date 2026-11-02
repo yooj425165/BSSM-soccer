@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import pymysql as py
 
@@ -37,10 +37,11 @@ def get_players():
 def get_players(data: dict):
     conn = get_db()
     cursor = conn.cursor()
-    sql = "INTO players (name, position, speed, physical, defending, shooting, passing, dribbling) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    sql = "INSERT INTO players (name, picture, position, back_number, stat_speed, stat_physical, stat_defending, stat_shooting, stat_passing, stat_dribbling) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor.execute(sql, (
         data.get("name"),
         data.get("position"),
+        int(data.get("number", 0)),
         int(data.get("speed", 0)),
         int(data.get("physical", 0)),
         int(data.get("defense", 0)),

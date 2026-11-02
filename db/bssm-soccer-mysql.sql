@@ -5,8 +5,10 @@ USE football_db;
 -- 1. 선수 (players) 테이블
 CREATE TABLE IF NOT EXISTS players (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,                   -- 선수 이름
+    name VARCHAR(50) NOT NULL, 
+    picture VARCHAR(255) NOT NULL,                  -- 선수 이름
     position VARCHAR(20) NOT NULL,               -- 포지션 (예: ST, CM, CB, GK)
+    back_number int DEFAULT 0,
     matches_played INT UNSIGNED DEFAULT 0,        -- 경기 수
     goals INT UNSIGNED DEFAULT 0,                 -- 골 수
     assists INT UNSIGNED DEFAULT 0,               -- 어시스트 수
